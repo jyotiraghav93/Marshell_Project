@@ -1,0 +1,42 @@
+MYSQL QUERIES:
+
+- Loan Status is either Available or Funded
+
+MYSQL QUERY:
+
+SELECT loan_transactions.transaction_id ,loan_transactions.transaction_type
+FROM loan_transactions INNER JOIN loan_details
+ON loan_transactions.loan_id = loan_details.loan_id 
+WHERE loan_details.loan_status IN ('Available','Funded')
+
+- Transaction Type can be Origination or Sale
+
+MYSQL QUERY:
+
+SELECT loan_transactions.transaction_id ,loan_transactions.transaction_type
+FROM loan_transactions 
+WHERE transaction_type IN ('Origination','Sale')
+
+- At least 2 Lenders
+
+MYSQL QUERY:
+
+- Each Loan Transaction should include all of its relational data in a single JSON data structure
+
+MYSQL QUERY:
+
+- Sort the Loan Transactions by Loan Amount from largest to smallest
+
+MYSQL QUERY:
+
+SELECT loan_transactions.transaction_id ,loan_transactions.transaction_type,loan_details.loan_id,loan_details.loan_amount,loan_details.interest_rate,loan_details.loan_status
+FROM loan_transactions INNER JOIN loan_details
+ON loan_transactions.loan_id = loan_details.loan_id 
+ORDER BY loan_details.loan_amount DESC
+
+- Return at most 5 Loan Transactions
+
+MYSQL QUERY:
+
+SELECT loan_transactions.transaction_id ,loan_transactions.transaction_type
+FROM loan_transactions limit 5

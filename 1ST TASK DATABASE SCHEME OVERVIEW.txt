@@ -1,0 +1,16 @@
+In database schema, I have created below tabels:
+
+a) Loan Master table -> for saving loan details
+Table Name: loan_details
+
+b) Loan Transactions table -> for saving transactions on that load , and their old lender and new lender details
+Table Name: loan_transactions
+
+c) Lender table -> for saving lender basic name , contact no details.
+Table Name: lender_details
+
+d) Entities table -> for saving entities details.
+Table Name: entities_details
+
+e) Lender and entities relationship table to maintain the data of which lender has sign a W-9 document for which entity.
+Table Name: lender_entities

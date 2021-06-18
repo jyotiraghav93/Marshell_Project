@@ -1,0 +1,48 @@
+Loan Master table
+
+Loan Amount (DECIMAL and NUMERIC )
+Interest Rate -> numeric 
+Loan status -> Draft, Available, Funded, or Complete -> enum
+
+Loan Transactions table
+
+Transaction type -> default value -> Origination
+
+then transaction type  ->Sales -> one lender to another lender -> old lender (id) -> new lender (id)
+
+Lender table
+disclaimer code 
+
+entities table -> 
+entity type -> Individual, LLC, Corporation, or Retirement Account
+
+lender -> entities -> relationship table -> document details sign
+
+**************************************************
+
+MYSQL QUERY:
+
+ retrieve a list of Loan Transactions
+
+- Loan Status is either Available or Funded
+
+SELECT loan_transaction.id AS transaction_id,loan_transaction.transaction_type
+FROM loan_transaction INNER JOIN loan_details
+ON loan_transaction.loan_id = loan_details.id
+WHERE loan_details.status IN ('Available','Funded')
+
+- Transaction Type can be Origination or Sale
+
+SELECT loan_transaction.id AS transaction_id,loan_transaction.transaction_type
+FROM loan_transaction 
+WHERE transaction_type IN ('Origination',Sale')
+
+- At least 2 Lenders
+
+
+- Each Loan Transaction should include all of its relational data in a single JSON data structure
+
+
+- Sort the Loan Transactions by Loan Amount from largest to smallest
+- Return at most 5 Loan Transactions
+
